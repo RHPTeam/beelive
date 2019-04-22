@@ -6,10 +6,6 @@ const cote = require( "cote" );
 let playing = new Set();
 
 class LivesService {
-
-
-
-
   static async init() {
     this.requester = new cote.Requester( {
       "name": "LivestreamMaster-requester",

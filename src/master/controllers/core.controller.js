@@ -1,12 +1,13 @@
-const { LivesService } = require("./live.services");
+/* eslint-disable strict */
+const { LivesService } = require( "./live.services" );
 
 module.exports = {
-  tests: async () => {},
-  status: async (req, res) => {
-    res.json({ err: false, message: "Server online" });
+  "tests": async () => {},
+  "status": async ( req, res ) => {
+    res.json( { "err": false, "message": "Server online" } );
   },
 
-  new: async (req, res) => {
+  "new": async ( req, res ) => {
     try {
       const {
           cookie,
@@ -17,9 +18,9 @@ module.exports = {
           logo,
           hd,
           title,
-          place,
-          ...opts
+          place
         } = req.body,
+        
         rs = await LivesService.live(
           cookie,
           link,
@@ -27,13 +28,13 @@ module.exports = {
           text,
           logo,
           hd,
-          opts
+          place,
+          { title, description }
         );
 
-
-      res.json(rs);
-    } catch (e) {
-      res.json(e.message);
+      res.json( rs );
+    } catch ( e ) {
+      res.json( e.message );
     }
   }
 };
